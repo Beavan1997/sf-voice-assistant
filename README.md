@@ -44,6 +44,12 @@
                         </ul>
                     </li>
                     <li>
+                        Classes Required in your Salesforce org:
+                        <ul>
+                            <li>In your Salesforce org, upload the two Apex classes available <a href="https://github.com/Beavan1997/sf-voice-assistant/tree/main/apexClasses" target="_blank">here</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         Use Voice Commands:
                         <ul>
                             <li>The extension utilizes voice recognition to understand your commands.</li>
