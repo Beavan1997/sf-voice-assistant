@@ -1,4 +1,5 @@
-<h1>SALESFORCE VOICE ASSISTANT</h1>   <img src="screenshots/image.png" alt="project-screenshot" width="400" height="400/">
+<h1>SALESFORCE VOICE ASSISTANT</h1>
+<img src="screenshots/image.png" alt="project-screenshot" width="400" height="400/">
 
 <h3>Boost your Salesforce Case Workflow with Voice Commands!</h3>
 <p>Introducing the Salesforce Voice Command extension for Chrome, your one-stop solution for managing cases in Salesforce with just your voice!</p>
