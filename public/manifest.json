@@ -8,7 +8,7 @@
       "default_popup": "popup.html",
       "default_icon": "microphone.png"
     },
-    "permissions": ["activeTab", "scripting", "storage"],
+    "permissions": ["storage"],
     "content_scripts": [{
       "matches": ["https://salesforce.com/*"],
       "run_at": "document_idle",

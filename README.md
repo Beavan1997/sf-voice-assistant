@@ -1,4 +1,4 @@
-<h1>SALESFORCE VOICE ASSISTANT</h1>
+<h1>SALESFORCE VOICE ASSISTANT</h1>   <img src="screenshots/Image.png" alt="project-screenshot" width="400" height="400/">
 
 <h3>Boost your Salesforce Case Workflow with Voice Commands!</h3>
 <p>Introducing the Salesforce Voice Command extension for Chrome, your one-stop solution for managing cases in Salesforce with just your voice!</p>
@@ -19,7 +19,6 @@
 <table border="0">
  <tr>
     <td><img src="screenshots/Image 1.png" alt="project-screenshot" width="600" height="400/"></td>
-    <td><img src="screenshots/Image 3.png" alt="project-screenshot" width="600" height="400/"></td>
  </tr>
 </table>
 
@@ -27,7 +26,7 @@
 <section class="how-to-use">
                 <h4>How to Use:</h4>
                 <ol>
-                    {<li>
+                    <li>
                         Login using your Salesforce credentials in the Settings section:
                         <ul>
                             <li><b>User Id:</b> Salesforce User Id</li>
@@ -35,7 +34,7 @@
                             <li><b>Client Id:</b> Your Salesforce Connected App Client Id. If you do not have one, please reach out to your Admin</li>
                             <li><b>Client Secret:</b> Your Salesforce Connected App Client Id. If you do not have one, please reach out to your Admin</li>
                         </ul>
-                    </li>}
+                    </li>
                     <li>
                         Grant Permissions:
                         <ul>
