@@ -1,6 +1,8 @@
 <h1>SALESFORCE VOICE ASSISTANT</h1>
 <img src="screenshots/image.png" alt="project-screenshot" width="400" height="400/">
 
+[![Available on the Chrome Web Store!](screenshots/ChromeWebStore.png)](https://chromewebstore.google.com/detail/salesforce-voice-assistan/aeckknhoicchpaijpdafgjnljdkhnoif)
+
 <h3>Boost your Salesforce Case Workflow with Voice Commands!</h3>
 <p>Introducing the Salesforce Voice Command extension for Chrome, your one-stop solution for managing cases in Salesforce with just your voice!</p>
 
@@ -14,6 +16,10 @@
 <b>Increase Efficiency and Stay on Top of Your Workload</b>
 
 <p>This extension is perfect for busy professionals who want to save time and effort managing their Salesforce cases. With voice commands, you can stay focused and get things done without ever needing to switch between windows or applications.</p>
+
+<h3>Demo Video of the Salesforce Voice Assistant</h3>
+
+[![Voice](https://img.youtube.com/vi/WflLXv8urLk/hqdefault.jpg)](https://youtu.be/WflLXv8urLk)
 
 <h4>Preview of the Tool</h4>
 
