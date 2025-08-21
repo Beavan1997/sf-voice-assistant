@@ -2,8 +2,8 @@
   "manifest_version": 3,
     "name": "Salesforce Voice Assistant",
     "description": "A Salesforce virtual assistant for hands free voice commands",
-    "version": "1.0",
-    "host_permissions": ["https://login.salesforce.com/*","https://bjm123-dev-ed.my.salesforce.com/*"],
+    "version": "2.0",
+    "host_permissions": ["https://*.salesforce.com/*"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": "microphone.png"

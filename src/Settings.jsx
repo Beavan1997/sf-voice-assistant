@@ -5,7 +5,7 @@ import Logout from "./Logout";
 
 const Settings = () => {
     const [taskConfirmation, setTaskConfirmation] = useState(true);
-    const [volume, setVolume] = useState(50); // Adjust initial volume (0-100)
+    const [volume, setVolume] = useState(50);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState('');
 

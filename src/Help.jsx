@@ -21,8 +21,14 @@ export default function Help() {
                     <li>
                         Grant Permissions:
                         <ul>
-                            <li>In Chrome extension settings, Provide access to microphone for the extension</li>
+                            <li>In Chrome extension site settings, Provide access to microphone for the extension</li>
                             <li>Granting these permissions is necessary for the extension to function properly.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Classes Required in your Salesforce org:
+                        <ul>
+                            <li>In your Salesforce org, upload the two Apex classes available <a href="https://github.com/Beavan1997/sf-voice-assistant/tree/main/apexClasses" target="_blank">here</a></li>
                         </ul>
                     </li>
                     <li>

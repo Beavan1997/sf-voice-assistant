@@ -71,68 +71,94 @@ function App() {
   }
 
   useEffect(() => {
-    getEnvVars();
-    chrome.storage.sync.get(['bearerToken', 'instanceUrl'], (result) => {
-      if (result.bearerToken && result.instanceUrl) {
-        setShowMicrophone(true);
-      }
-    });
-    
-    if(!valSet || !globalConfirm){
-      let cNumber = null;
-      const cleanedTranscript = transcript.replace(/[^a-zA-Z0-9]/g, "");
-      const match = cleanedTranscript.match(/case[number]+(\d+)/i);
-      if (match) {
-        cNumber = "1" + match[1];
-      }
-      setCaseNumber(cNumber);
-      if (keywordIndex >= 0 && keywordIndex <= 8) {
-        let comment = 'No Comment';
-        const commentIndex = transcript.indexOf("comment");
-        if (commentIndex !== -1) {
-          comment = transcript.substring(commentIndex + "comment".length + 1);
+    const checkTokenAndProceed = async () => {
+      getEnvVars();
+      chrome.storage.sync.get(['bearerToken', 'instanceUrl'], async (result) => {
+        if (result.bearerToken && result.instanceUrl) {
+          try {
+            const response = await fetch(
+              `${result.instanceUrl}/services/data/v57.0/`, 
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${result.bearerToken}`,
+                  Accept: "application/json",
+                }
+              }
+            );
+  
+            if (response.status !== 401) {
+              setShowMicrophone(true);
+              setbearerToken(result.bearerToken);
+              setinstanceUrl(result.instanceUrl);
+            } else {
+              setShowMicrophone(false);
+            }
+          } catch (error) {
+            console.error("Token check failed:", error);
+            setShowMicrophone(false);
+          }
         }
-        setCaseComment(comment);
-        setValset(true);
-        if (globalConfirm) {
-          speak(`Are you sure you want to add a Case comment`);
-          setConfirmFlag(true);
-        }
-      } else if (keywordIndex > 8 && keywordIndex <= 16) {
-        let cStatus = 'No Status';
-        const caseStatusIndex = transcript.indexOf("status to");
-        if (caseStatusIndex !== -1) {
-          cStatus = transcript.substring(caseStatusIndex + "status to".length + 1);
-          cStatus = cStatus.trim().replace(/[^\w\s]+-$/g, "");
-          cStatus = cStatus.charAt(0).toUpperCase() + cStatus.slice(1);
-        }
-        setCaseStatus(cStatus);
-        setValset(true);
-        if (globalConfirm) {
-          speak(`Are you sure you want to update the Case Status`);
-          setConfirmFlag(true);
-        }
-      }
-    }
+      });
 
-    if(!globalConfirm){
-      setValset(!valSet);
-      if (keywordIndex >= 0 && keywordIndex <= 8) {
-        addCaseComment(caseNumber,caseComment);
-      } else if (keywordIndex > 8 && keywordIndex <= 16) {
-        updateCaseStatus(caseNumber,caseStatus);
+      if(!valSet || !globalConfirm) {
+        let cNumber = null;
+        const cleanedTranscript = transcript.replace(/[^a-zA-Z0-9]/g, "");
+        const match = cleanedTranscript.match(/case[number]+(\d+)/i);
+        if (match) {
+          cNumber = "1" + match[1];
+        }
+        setCaseNumber(cNumber);
+  
+        if (keywordIndex >= 0 && keywordIndex <= 8) {
+          let comment = 'No Comment';
+          const commentIndex = transcript.indexOf("comment");
+          if (commentIndex !== -1) {
+            comment = transcript.substring(commentIndex + "comment".length + 1);
+          }
+          setCaseComment(comment);
+          setValset(true);
+          if (globalConfirm) {
+            speak(`Are you sure you want to add a Case comment`);
+            setConfirmFlag(true);
+          }
+        } else if (keywordIndex > 8 && keywordIndex <= 16) {
+          let cStatus = 'No Status';
+          const caseStatusIndex = transcript.indexOf("status to");
+          if (caseStatusIndex !== -1) {
+            cStatus = transcript.substring(caseStatusIndex + "status to".length + 1);
+            cStatus = cStatus.trim().replace(/[^\w\s]+-$/g, "");
+            cStatus = cStatus.charAt(0).toUpperCase() + cStatus.slice(1);
+          }
+          setCaseStatus(cStatus);
+          setValset(true);
+          if (globalConfirm) {
+            speak(`Are you sure you want to update the Case Status`);
+            setConfirmFlag(true);
+          }
+        }
       }
-    }
-
-    if(globalConfirm && valSet && !confirmFlag){
-      setValset(!valSet);
-      if (keywordIndex >= 0 && keywordIndex <= 8) {
-        addCaseComment(caseNumber,caseComment);
-      } else if (keywordIndex > 8 && keywordIndex <= 16) {
-        updateCaseStatus(caseNumber,caseStatus);
+  
+      if(!globalConfirm){
+        setValset(!valSet);
+        if (keywordIndex >= 0 && keywordIndex <= 8) {
+          addCaseComment(caseNumber, caseComment);
+        } else if (keywordIndex > 8 && keywordIndex <= 16) {
+          updateCaseStatus(caseNumber, caseStatus);
+        }
       }
-    }
-
+  
+      if(globalConfirm && valSet && !confirmFlag){
+        setValset(!valSet);
+        if (keywordIndex >= 0 && keywordIndex <= 8) {
+          addCaseComment(caseNumber, caseComment);
+        } else if (keywordIndex > 8 && keywordIndex <= 16) {
+          updateCaseStatus(caseNumber, caseStatus);
+        }
+      }
+    };
+  
+    checkTokenAndProceed();
   }, [flag]);
 
   useEffect(() => {

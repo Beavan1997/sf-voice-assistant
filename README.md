@@ -45,7 +45,7 @@
                     <li>
                         Grant Permissions:
                         <ul>
-                            <li>In Chrome extension settings, Provide access to microphone for the extension</li>
+                            <li>In Chrome extension site settings, Provide access to microphone for the extension</li>
                             <li>Granting these permissions is necessary for the extension to function properly.</li>
                         </ul>
                     </li>
